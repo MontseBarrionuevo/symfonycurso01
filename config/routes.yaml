@@ -1,3 +1,7 @@
+#index:
+ #   path: /
+ #   controller: App\Controller\PreguntaController::home
+
 controllers:
     resource: ../src/Controller/
     type: attribute
