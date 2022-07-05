@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PreguntaController
+class PreguntaController extends AbstractController
 {
     /**
      * @Route("/")
@@ -18,6 +19,15 @@ class PreguntaController
      * @Route("/preguntas/{slug}")
      */
     public function mostrar($slug){
-        return new Response( sprintf('Hola %s', $slug));
+
+        $res = [
+            'Respuesta 1',
+            'Respuesta 2',
+            'Respuesta 3'
+        ];
+        return $this->render( view: 'res.html.twig', parameters: [
+            'pregunta' => sprintf('Hola %s', $slug),
+            'res' => $res,
+        ]);
     }
 }
