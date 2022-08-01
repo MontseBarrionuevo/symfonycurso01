@@ -1,13 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %} Pregunta: {{ pregunta }}{% endblock %}
 {% block body %}
-
-<h2>{{ pregunta }}</h2>
-{# Esto es un comentario #}
-<ul>
-    Respuestas: {{ res | length }}
-    {% for re in res %}
-    <li>{{ re }}</li>
-    {% endfor %}
-</ul>
+    <div class="p-4 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Pregunta:</h1>
+            <p class="col-md-8 fs-4">{{ pregunta }}</p>
+        </div>
+    </div>
+    <h2 class="p-4"> Respuestas {{ res|length }}:</h2>
+    <ul class="list-group p-4">
+        {% for re in res %}
+            <li class="list-group-item thumbs-like">{{ re }}
+                <a class="bi bi-hand-thumbs-up-fill" data-like="like"></a>
+                <a class="bi bi-hand-thumbs-down-fill" data-like="dislike"></a>
+                <span class="likes-total">7</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('res2') }}
 {% endblock %}
